@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class MovieService {
 
-    private resourceUrl = environment.localhost + ':3000/movies';
+    private resourceUrl = environment.localhost + ':3000/movie';
 
     constructor(private httpClient: HttpClient) { }
 
@@ -21,11 +21,6 @@ export class MovieService {
 
     postMovie(movie: Movie): Observable<Movie> {
         return this.httpClient.post<Movie>(this.resourceUrl, movie);
-    }
-
-    updateMovie(movie: Movie) {
-        const path = `${this.resourceUrl}/${movie.id}`;
-        return this.httpClient.put(path, movie);
     }
 
     deleteMovie(id: number): Observable<any> {
